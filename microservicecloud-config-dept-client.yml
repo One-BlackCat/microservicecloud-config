@@ -1,0 +1,82 @@
+spring:
+  profiles:
+  active:
+  - dev
+---
+server:
+  port: 8001
+spring:
+  profiles: dev
+  application:
+    name: microservicecloud-config-dept-client
+  datasource:
+      url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&verifyServerCertificate=false&useSSL=false
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.black.springcloud.entities
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰命名
+    cache-enabled: true #开启二级缓存
+
+eureka:
+  client:
+    #register-with-eureka: false
+    #fetch-registry: false
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    #服务实例名称修改
+    instance-id: microservicecloud-dept8001.com
+    #访问路径显示IP地址
+    prefer-ip-address: true
+
+
+info:
+  app.name: black-springcloud-micoservices-config01
+  company.name: www.blackcat.com
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
+---
+server:
+  port: 8001
+spring:
+  profiles: test
+  application:
+    name: microservicecloud-config-dept-client
+  datasource:
+      url: jdbc:mysql://localhost:3306/springcloud2?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&verifyServerCertificate=false&useSSL=false
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.black.springcloud.entities
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰命名
+    cache-enabled: true #开启二级缓存
+
+eureka:
+  client:
+    #register-with-eureka: false
+    #fetch-registry: false
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    #服务实例名称修改
+    instance-id: microservicecloud-dept8001.com
+    #访问路径显示IP地址
+    prefer-ip-address: true
+
+
+info:
+  app.name: black-springcloud-micoservices-config01
+  company.name: www.blackcat.com
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
